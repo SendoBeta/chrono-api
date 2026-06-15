@@ -1,4 +1,4 @@
-const API_URL = 'https://chronoapi-production-38ef.up.railway.app/';
+const API_URL = 'https://chronoapi-production-38ef.up.railway.app';
 
 const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 const dayNames = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
