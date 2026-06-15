@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario</title>
+
+    <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+<div class="login-screen" id="login-screen">
+  <div class="auth-card" id="auth-card">
+    <div class="auth-form-container auth-sign-up-container">
+      <form id="register-form">
+        <h1>Crear cuenta</h1>
+        <span>Registra tus datos para comenzar</span>
+        <input type="text" id="register-name" placeholder="Nombre" value="admin" required>
+        <input type="email" id="register-email" placeholder="Correo" required>
+        <input type="password" id="register-password" placeholder="Contraseña" required>
+        <button type="submit">Registrarse</button>
+      </form>
+    </div>
+
+    <div class="auth-form-container auth-sign-in-container">
+      <form id="login-form">
+        <h1>Iniciar sesión</h1>
+        <span>Ingresa con tu usuario</span>
+        <input type="text" id="login-user" placeholder="Usuario o correo" value="admin" required>
+        <input type="password" id="login-password" placeholder="Contraseña" required>
+        <a href="#">¿Olvidaste tu contraseña?</a>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+
+    <div class="auth-overlay-container">
+      <div class="auth-overlay">
+        <div class="auth-overlay-panel auth-overlay-left">
+          <h1>Bienvenido de nuevo</h1>
+          <p>Inicia sesión para volver a tu calendario y gestionar tus eventos.</p>
+          <button class="auth-ghost" id="show-login" type="button">Iniciar sesión</button>
+        </div>
+        <div class="auth-overlay-panel auth-overlay-right">
+          <h1>Hola</h1>
+          <p>Crea una cuenta para organizar 
+            tus eventos en ChronoApp.</p>
+          <button class="auth-ghost" id="show-register" type="button">Registrarse</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container app-hidden" id="app-container">
+
+  <div class="calendar-base">
+
+    <div class="year">2017</div>
+    <!-- year -->
+
+    <div class="triangle-left"></div>
+    <!--triangle -->
+    <div class="triangle-right"></div>
+    <!--  triangle -->
+
+    <div class="months">
+      <span class="month-hover">Enero</span>
+      <span class="month-hover">Febrero</span> 
+      <span class="month-hover">Marzo</span> 
+      <strong class="month-color">Abril</strong>
+      <span class="month-hover">Mayo</span>
+      <span class="month-hover">Junio</span>
+      <span class="month-hover">Julio</span> 
+      <span class="month-hover">Agosto</span> 
+      <span class="month-hover">Septiembre</span> 
+      <span class="month-hover">Octubre</span> 
+      <span class="month-hover">Noviembre</span> 
+      <span class="month-hover">Diciembre</span>
+    </div><!-- months -->
+    <hr class="month-line" />
+
+    <div class="days">
+      <span>Domingo</span>
+      <span>Lunes</span>
+      <span>Martes</span>
+      <span>Miércoles</span>
+      <span>Jueves</span>
+      <span>Viernes</span>
+      <span>Sábado</span>
+    </div>
+    <!-- days -->
+
+    <div class="num-dates" id="calendar-days"></div>
+    <!-- num-dates -->
+    <div class="event-indicator"></div>
+    <!-- event-indicator -->
+    <div class="active-day"></div>
+    <!-- active-day -->
+    <div class="event-indicator two"></div>
+    <!-- event-indicator -->
+
+  </div>
+  <!-- calendar-base -->
+  <div class="calendar-left">
+
+    <div class="hamburger" id="menu-button">
+      <div class="burger-line"></div>
+      <!-- burger-line -->
+      <div class="burger-line"></div>
+      <!-- burger-line -->
+      <div class="burger-line"></div>
+      <!-- burger-line -->
+    </div>
+    <!-- hamburger -->
+    <div class="user-menu" id="user-menu">
+      <button type="button" id="my-events-button">Mis eventos</button>
+      <button type="button" id="logout-button">Cerrar sesión</button>
+    </div>
+
+
+    <div class="num-date">27</div>
+    <!--num-date -->
+    <div class="day">JUEVES</div>
+    <!--day -->
+    <div class="current-events">Eventos actuales
+      <br/>
+      <ul id="event-list"></ul>
+      <span class="posts" id="selected-date-text">Selecciona un día</span></div>
+    <!--current-events -->
+
+    <div class="create-event">Crear un evento</div>
+    <!-- create-event -->
+    <hr class="event-line" />
+    <form class="event-form" id="event-form">
+      <input type="hidden" id="event-edit-index">
+      <label>
+        Nombre
+        <input type="text" id="event-name" placeholder="Nombre del evento" autocomplete="off" required>
+      </label>
+      <label>
+        Descripcion
+        <textarea id="event-description" placeholder="Descripcion del evento" required></textarea>
+      </label>
+      <label>
+        Inicio
+        <input type="datetime-local" id="event-start" required>
+      </label>
+      <label>
+        Fin
+        <input type="datetime-local" id="event-end" required>
+      </label>
+      <div class="event-form-actions">
+        <button type="submit" id="event-submit">Guardar</button>
+        <button type="button" id="event-cancel">Cancelar</button>
+      </div>
+    </form>
+    <div class="add-event"><span class="add">+</span></div>
+    <!-- add-event -->
+
+    <div class="user-message">Usuario: <span id="user-name">admin</span></div>
+
+  </div>
+  <!-- calendar-left -->
+
+</div>
+<!-- container -->
+<div class="confirm-modal" id="confirm-modal">
+  <div class="confirm-box">
+    <h2 id="confirm-title">Confirmar accion</h2>
+    <p id="confirm-message"></p>
+    <div class="confirm-actions">
+      <button type="button" id="confirm-accept">Aceptar</button>
+      <button type="button" id="confirm-cancel">Cancelar</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast">
+  <span class="toast-icon">✓</span>
+  <span id="toast-message"></span>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
