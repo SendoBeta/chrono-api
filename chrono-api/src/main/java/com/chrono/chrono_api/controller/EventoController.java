@@ -1,7 +1,6 @@
 package com.chrono.chrono_api.controller;
 
 import com.chrono.chrono_api.model.Evento;
-import com.chrono.chrono_api.model.Usuario;
 import com.chrono.chrono_api.service.EventoService;
 import com.chrono.chrono_api.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
